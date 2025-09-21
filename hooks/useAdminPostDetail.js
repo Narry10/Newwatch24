@@ -60,13 +60,3 @@ export function useDeletePostDetail(slug) {
     }
   );
 }
-export function useDeletePostDetail(slug) {
-  return useSWRMutation(
-    slug ? `/api/postDetails/${encodeURIComponent(slug)}` : null,
-    async (url) => {
-      const res = await fetch(url, { method: "DELETE", cache: "no-store" });
-      if (!res.ok) throw new Error(await res.text());
-      return res.json(); // or return { success: true } if API responds 204
-    }
-  );
-}
