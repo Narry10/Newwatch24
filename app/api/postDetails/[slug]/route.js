@@ -1,6 +1,10 @@
 // app/api/postDetails/[slug]/route.js
 import { NextResponse } from "next/server";
-import { firestore, FieldValue } from "@/configs/firebaseAdmin";
+import { firestore } from "@/configs/firebaseAdmin";
+import { FieldValue } from "firebase-admin/firestore";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET(req, { params }) {
   try {

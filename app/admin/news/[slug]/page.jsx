@@ -15,7 +15,7 @@ export default function AdminPostDetailPage() {
   const { slug } = useParams() ?? {};
   const router = useRouter();
 
-  const { detail, isLoading, isError, mutate } = useAdminPostDetail(slug);
+  const { post, isLoading, isError, mutate } = useAdminPostDetail(slug);
   const { trigger: createDetail, isMutating: creating } = useCreatePostDetail();
   const { trigger: updateDetail, isMutating: updating } = useUpdatePostDetail(slug);
   const { trigger: deleteDetail, isMutating: deleting } = useDeletePostDetail(slug);
@@ -24,13 +24,13 @@ export default function AdminPostDetailPage() {
   const [tab, setTab] = useState("split"); // ✅ mặc định Split
   const [dirty, setDirty] = useState(false);
 
-  const exists = !!detail;
+  const exists = !!post;
   const saving = creating || updating;
   
   // preload content
   useEffect(() => {
-    if (detail) setContent(detail.content || "");
-  }, [detail]);
+    if (post) setContent(post.content || "");
+  }, [post]);
 
   const stats = useMemo(() => {
     const text = content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();

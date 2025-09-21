@@ -8,7 +8,7 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 // ---- GET by slug ----
 export function useAdminPostDetail(slug) {
   const { data, error, isLoading, mutate } = useSWR(
-    slug ? `/api/admin/posts/by-slug/${slug}` : null,
+    slug ? `/api/postDetails/${encodeURIComponent(slug)}` : null,
     fetcher
   );
 
