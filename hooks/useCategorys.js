@@ -12,9 +12,13 @@ export function useCategoryPostsInfinite({ category = '', limit = 10 } = {}) {
     return `/api/posts/category?${params.toString()}`;
   };
 
-  const { data, error, size, setSize, isLoading } = useSWRInfinite(getKey, fetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data, error, size, setSize, isLoading, isValidating } =
+    useSWRInfinite(getKey, fetcher, {
+      revalidateOnFocus: false,
+      dedupingInterval: 1000,   // giảm nguy cơ gọi lặp khi render lại
+      shouldRetryOnError: true,
+      errorRetryCount: 3,
+    });
 
   const pages = data || [];
   const posts = pages.flatMap((p) => p?.items || []);
@@ -23,9 +27,9 @@ export function useCategoryPostsInfinite({ category = '', limit = 10 } = {}) {
   return {
     posts,
     nextPageToken,
-    isLoading,
+    isLoading: isLoading || (size > 0 && isValidating && !data),
     isError: error,
-    loadMore: () => setSize(size + 1),
+    loadMore: () => setSize((s) => s + 1),
     hasMore: Boolean(nextPageToken),
   };
 }
