@@ -19,7 +19,9 @@ out/
 .DS_Store
 
 # environment variables
-.env*
+.env
+.env.local
+.env.production
 env.js
 
 # npm/yarn logs
