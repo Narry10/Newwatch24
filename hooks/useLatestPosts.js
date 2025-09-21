@@ -8,8 +8,10 @@ export function useLatestPosts({ limit = 10 } = {}) {
     fetcher,
     {
       revalidateOnFocus: false,
+      errorRetryCount: 3,
     }
   );
+  
 
   return {
     posts: data?.data || [],

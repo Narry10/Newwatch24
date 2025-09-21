@@ -1,6 +1,7 @@
 // lib/firebaseAdmin.ts
 import 'server-only';
 import admin, { app as adminApp } from 'firebase-admin';
+import { FieldPath } from 'firebase-admin/firestore';
 
 // Dùng type rõ ràng cho global singleton (tránh ReturnType mơ hồ)
 declare global {
@@ -63,3 +64,6 @@ export const messaging = () => admin.messaging(initFirebaseAdmin());
 
 // Export FieldValue để sử dụng trong API routes
 export const FieldValue = admin.firestore.FieldValue;
+export {
+  FieldPath
+} from 'firebase-admin/firestore';

@@ -1,9 +1,9 @@
-import { firestore } from '@/configs/firebaseAdmin';
+import { firestore, FieldPath } from '@/configs/firebaseAdmin';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-// ===== Helpers =====
+
 function encodeToken(t) {
   return Buffer.from(JSON.stringify(t)).toString('base64url');
 }
@@ -21,18 +21,18 @@ export async function GET(req) {
     const db = firestore();
     const { searchParams } = new URL(req.url);
 
-    // Giới hạn cứng để tránh lạm dụng
-    const limit = Math.min(parseInt(searchParams.get('limit') || '10', 10), 50);
+    // ✅ Clamp & fallback an toàn cho limit
+    const limitRaw = searchParams.get('limit') ?? '10';
+    const parsed = parseInt(limitRaw, 10);
+    const limit = Math.min(Math.max(Number.isFinite(parsed) ? parsed : 10, 1), 50);
 
-    // Token phân trang dạng { publishAtMs: number, id: string }
     const pageToken = decodeToken(searchParams.get('pageToken'));
 
-    // Query: chỉ lấy bài published, orderBy publishAt desc + __name__ desc để tránh trùng timestamp
     let q = db
       .collection('posts')
-      .where('status', '==', 'published') // nếu bạn muốn chỉ public
+      .where('status', '==', 'published')
       .orderBy('publishAt', 'desc')
-      .orderBy('__name__', 'desc')
+      .orderBy(FieldPath.documentId(), 'desc')
       .limit(limit);
 
     if (pageToken?.publishAtMs && pageToken?.id) {
@@ -40,14 +40,9 @@ export async function GET(req) {
     }
 
     const snap = await q.get();
-    const docs = snap.docs;
-
-    const data = docs.map((doc) => {
+    const data = snap.docs.map((doc) => {
       const d = doc.data();
-      const publishAt = d.publishAt?.toDate?.() ?? null;
-      const createdAt = d.createdAt?.toDate?.() ?? null;
-      const updatedAt = d.updatedAt?.toDate?.() ?? null;
-
+      const toIso = (ts) => (ts?.toDate?.() ? ts.toDate().toISOString() : null);
       return {
         id: doc.id,
         title: d.title || '',
@@ -57,14 +52,13 @@ export async function GET(req) {
         featuredImageUrl: d.featuredImageUrl || '',
         subtitle: d.subtitle || '',
         status: d.status || 'draft',
-        publishAt: publishAt ? publishAt.toISOString() : null,
-        createdAt: createdAt ? createdAt.toISOString() : null,
-        updatedAt: updatedAt ? updatedAt.toISOString() : null,
+        publishAt: toIso(d.publishAt),
+        createdAt: toIso(d.createdAt),
+        updatedAt: toIso(d.updatedAt),
       };
     });
-
-    // Tạo nextPageToken từ doc cuối theo cùng thứ tự orderBy
-    const last = docs.at(-1);
+    
+    const last = snap.docs.at(-1);
     const nextPageToken = last
       ? encodeToken({
           publishAtMs:
@@ -75,17 +69,20 @@ export async function GET(req) {
         })
       : null;
 
-    return NextResponse.json({
-      success: true,
-      data,
-      total: undefined, // nếu cần total, nên precompute vào 1 doc khác (counter)
-      nextPageToken,
-    });
+    return NextResponse.json({ success: true, data, nextPageToken });
   } catch (err) {
+    const msg = String(err?.message || err);
+
+    // ✅ Báo rõ nếu thiếu index Firestore
+    if (msg.includes('The query requires an index')) {
+      console.error('[posts/latest] missing index:', msg);
+      return NextResponse.json(
+        { success: false, error: 'Missing Firestore composite index for (status==, publishAt desc, documentId desc).' },
+        { status: 400 }
+      );
+    }
+
     console.error('[posts/latest] error:', err);
-    return NextResponse.json(
-      { success: false, error: err.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: 'Internal Server Error' }, { status: 500 });
   }
 }
