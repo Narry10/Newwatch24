@@ -10,14 +10,14 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 export function useAdminPosts({ page = 1, limit = 10 } = {}) {
   const params = new URLSearchParams({ page, limit });
   const { data, error, isLoading, mutate } = useSWR(
-    `/api/posts?${params}`,
+    `/api/admin/posts?${params}`,
     fetcher,
     { revalidateOnFocus: false }
   );
 
   return {
-    posts: data?.items || [],
-    totalItems: data?.totalItems || 0,
+    posts: data?.posts || [],
+    totalItems: data?.total || 0,
     totalPages: data?.totalPages || 1,
     isLoading,
     isError: error,
@@ -28,13 +28,13 @@ export function useAdminPosts({ page = 1, limit = 10 } = {}) {
 // ---- Single post by id ----
 export function useAdminPost(id) {
   const { data, error, isLoading, mutate } = useSWR(
-    id ? `/api/posts/${id}` : null,
+    id ? `/api/admin/posts/${id}` : null,
     fetcher,
     { revalidateOnFocus: false }
   );
 
   return {
-    post: data?.data || null,
+    post: data,
     isLoading,
     isError: error,
     mutate,
@@ -42,39 +42,48 @@ export function useAdminPost(id) {
 }
 
 // ---- Create ----
-export function useCreatePost() {
-  return useSWRMutation('/api/posts/create', async (url, { arg }) => {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(arg),
-    });
-    if (!res.ok) throw new Error(await res.text());
-    return res.json();
+async function createPostRequest(url, { arg }) {
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(arg),
   });
+  if (!res.ok) throw new Error('Failed to create post');
+  return res.json();
+}
+
+export function useCreatePost() {
+  return useSWRMutation('/api/admin/posts', createPostRequest);
 }
 
 // ---- Update ----
-export function useUpdatePost(id) {
-  return useSWRMutation(id ? `/api/posts/${id}` : null, async (url, { arg }) => {
-    const res = await fetch(url, {
-      method: 'PATCH',
-      headers: { 'content-type': 'application/json', 'x-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' },
-      body: JSON.stringify(arg),
-    });
-    if (!res.ok) throw new Error(await res.text());
-    return res.json();
+async function updatePostRequest(url, { arg }) {
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(arg),
   });
+  if (!res.ok) throw new Error('Failed to update post');
+  return res.json();
+}
+
+export function useUpdatePost(id) {
+  return useSWRMutation(
+    id ? `/api/admin/posts/${id}` : null,
+    updatePostRequest
+  );
 }
 
 // ---- Delete ----
+async function deletePostRequest(url) {
+  const res = await fetch(url, { method: 'DELETE' });
+  if (!res.ok) throw new Error('Failed to delete post');
+  return res.json();
+}
+
 export function useDeletePost(id) {
-  return useSWRMutation(id ? `/api/posts/${id}` : null, async (url) => {
-    const res = await fetch(url, {
-      method: 'DELETE',
-      headers: { 'x-api-key': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '' },
-    });
-    if (!res.ok) throw new Error(await res.text());
-    return res.json();
-  });
+  return useSWRMutation(
+    id ? `/api/admin/posts/${id}` : null,
+    deletePostRequest
+  );
 }

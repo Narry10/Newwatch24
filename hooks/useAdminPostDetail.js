@@ -8,24 +8,14 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 // ---- GET by slug ----
 export function useAdminPostDetail(slug) {
   const { data, error, isLoading, mutate } = useSWR(
-    slug ? `/api/postDetails/${slug}` : null,
-    fetcher,
-    { revalidateOnFocus: false }
+    slug ? `/api/admin/posts/by-slug/${slug}` : null,
+    fetcher
   );
 
-  if (data?.error) {
-    return {
-      detail: null,
-      isLoading,
-      isError: error,
-      mutate,
-    };
-  }
-
   return {
-    detail: data || null,
+    post: data,
     isLoading,
-    isError: error,
+    isError: !!error,
     mutate,
   };
 }
@@ -60,6 +50,16 @@ export function useUpdatePostDetail(slug) {
   );
 }
 
+export function useDeletePostDetail(slug) {
+  return useSWRMutation(
+    slug ? `/api/postDetails/${encodeURIComponent(slug)}` : null,
+    async (url) => {
+      const res = await fetch(url, { method: "DELETE", cache: "no-store" });
+      if (!res.ok) throw new Error(await res.text());
+      return res.json(); // or return { success: true } if API responds 204
+    }
+  );
+}
 export function useDeletePostDetail(slug) {
   return useSWRMutation(
     slug ? `/api/postDetails/${encodeURIComponent(slug)}` : null,
