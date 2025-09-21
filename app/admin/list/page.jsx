@@ -2,7 +2,7 @@
 
 import { PostFormModal } from "@/components/layout/admins/PostFormModal";
 import {
-  useAdminPost,
+  useAdminPosts,
   useCreatePost,
   useDeletePost,
   useUpdatePost,
