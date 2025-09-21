@@ -2,6 +2,7 @@ import { firestore } from '@/configs/firebaseAdmin';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 // ===== Helpers =====
 function encodeToken(t) {
   return Buffer.from(JSON.stringify(t)).toString('base64url');
