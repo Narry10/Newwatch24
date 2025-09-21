@@ -44,4 +44,4 @@ export const firestore = () => admin.firestore(init());
 export const auth = () => admin.auth(init());
 export const storage = () => admin.storage(init());
 export const messaging = () => admin.messaging(init());
-export { FieldPath }; // cho .documentId()
+export { FieldPath }; 

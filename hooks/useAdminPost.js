@@ -10,7 +10,7 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 export function useAdminPosts({ page = 1, limit = 10 } = {}) {
   const params = new URLSearchParams({ page, limit });
   const { data, error, isLoading, mutate } = useSWR(
-    `/api/admin/posts?${params}`,
+    `/api/posts?${params}`,
     fetcher,
     { revalidateOnFocus: false }
   );
@@ -28,7 +28,7 @@ export function useAdminPosts({ page = 1, limit = 10 } = {}) {
 // ---- Single post by id ----
 export function useAdminPost(id) {
   const { data, error, isLoading, mutate } = useSWR(
-    id ? `/api/admin/posts/${id}` : null,
+    id ? `/api/posts/${id}` : null,
     fetcher,
     { revalidateOnFocus: false }
   );
@@ -53,13 +53,13 @@ async function createPostRequest(url, { arg }) {
 }
 
 export function useCreatePost() {
-  return useSWRMutation('/api/admin/posts', createPostRequest);
+  return useSWRMutation('/api/posts/create', createPostRequest);
 }
 
 // ---- Update ----
 async function updatePostRequest(url, { arg }) {
   const res = await fetch(url, {
-    method: 'PUT',
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(arg),
   });
@@ -69,7 +69,7 @@ async function updatePostRequest(url, { arg }) {
 
 export function useUpdatePost(id) {
   return useSWRMutation(
-    id ? `/api/admin/posts/${id}` : null,
+    id ? `/api/posts/${id}` : null,
     updatePostRequest
   );
 }
@@ -83,7 +83,7 @@ async function deletePostRequest(url) {
 
 export function useDeletePost(id) {
   return useSWRMutation(
-    id ? `/api/admin/posts/${id}` : null,
+    id ? `/api/posts/${id}` : null,
     deletePostRequest
   );
 }
