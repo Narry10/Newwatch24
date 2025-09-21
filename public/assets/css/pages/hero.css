@@ -1,0 +1,144 @@
+.hero-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 500px; /* set chiều cao đồng bộ */
+}
+
+.hero-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* lớp overlay đen */
+.hero-card::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* full 4 cạnh */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85));
+  z-index: 1;
+}
+
+/* content nằm trên overlay */
+.hero-card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  z-index: 2; /* nằm trên overlay */
+  color: #fff;
+}
+
+.hero-category {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: #16a34a;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  text-decoration: none;
+}
+
+.hero-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  & > li > a {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+}
+
+
+/* wrapper */
+.hero-bottom {
+  padding: 0.5rem;
+}
+
+/* ==== Sports thumb (hero-bottom) ==== */
+.sports-thumb {
+  display: block;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 16px 14px;
+  height: 100%;
+  margin: 20px 0;
+  border: 1px solid #ececec;
+  text-decoration: none;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  color: #111827;
+  position: relative;
+  margin: 10px 0;
+  min-height: 150px;
+}
+
+.sports-thumb:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  border-color: #e3e3e3;
+}
+
+/* trạng thái đang chọn (slide active) */
+.hero-bottom .swiper-slide-thumb-active .sports-thumb {
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--primary-color) 40%, transparent);
+}
+
+/* Ribbon #1 RANKING với vát cạnh phải */
+.sports-ribbon {
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-color), color-mix(in srgb, var(--primary-color) 80%, white));
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 6px 0 10px 0;
+  margin-bottom: 12px;
+}
+
+.sports-ribbon::after {
+  content: "";
+  position: absolute;
+  right: -14px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 18px solid var(--primary-color);
+  border-left: 14px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-right: 0 solid transparent;
+  border-radius: 0 6px 0 0;
+}
+
+/* Tiêu đề */
+.sports-thumb-title {
+
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 800;
+  color: #111827;
+  margin: 20px 0 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

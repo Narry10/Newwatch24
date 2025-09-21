@@ -1,0 +1,238 @@
+:root{
+  --ff: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  --bg: #ffffff;
+  --fg: #0f172a;            /* slate-900 */
+  --muted: #64748b;         /* slate-500 */
+  --primary: #2563eb;       /* blue-600 */
+  --primary-600: #1d4ed8;
+  --ring: 0 0 0 3px rgba(37, 99, 235, .15);
+  --chip-bg: #ffffff;
+  --chip-border: #e2e8f0;   /* slate-200 */
+  --chip-active-bg: #2563eb;
+  --chip-active-fg: #fff;
+  --card-bg: #fff;
+  --card-border: #e2e8f0;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* Dark mode: nếu bạn có toggle, thêm [data-theme="dark"] vào <html> */
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --fg: #e5e7eb;
+  --muted: #94a3b8;
+  --chip-bg: #0f172a;
+  --chip-border: #1f2937;
+  --card-bg: #0f172a;
+  --card-border: #1f2937;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.35);
+  --shadow-md: 0 6px 18px rgba(0,0,0,.35);
+}
+
+/* Wrapper section (optional) */
+.post-layout-1 {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Category filter */
+.category-filter{
+  position: sticky;
+  top: 64px; /* tuỳ header */
+  z-index: 5;
+  display: flex;
+  gap: .5rem;
+  padding: .75rem .25rem;
+  margin-bottom: 1.5rem;
+  background: var(--bg);
+  border-radius: .75rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.category-filter::-webkit-scrollbar{
+  height: 8px;
+}
+.category-filter::-webkit-scrollbar-thumb{
+  background: #cbd5e1; /* slate-300 */
+  border-radius: 999px;
+}
+
+.cat-chip{
+  flex: 0 0 auto;
+  padding: .5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--chip-border);
+  background: var(--chip-bg);
+  color: var(--fg);
+  font: 500 0.9rem/1 var(--ff);
+  transition: transform .12s ease, box-shadow .12s ease, background .15s ease, color .15s ease;
+  white-space: nowrap;
+}
+.cat-chip:hover{
+  transform: translateY(-1px);
+}
+.cat-chip:focus-visible{
+  outline: none;
+}
+.cat-chip.is-active{
+  background: var(--chip-active-bg);
+  color: var(--chip-active-fg);
+  border-color: transparent;
+}
+
+/* Grid bài viết */
+.posts-grid{
+  display: grid;
+  gap: 1.25rem;
+  /* mobile default: 2 cột */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 640px){ /* sm */
+  .posts-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 768px){ /* md */
+  .posts-grid{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 1280px){ /* xl */
+  .posts-grid{ grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+.post-col{}
+
+/* Bạn có thể “bọc” PostCard bằng lớp sau để đảm bảo ảnh đồng nhất */
+.post-card{
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: .75rem;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.post-card:hover{
+  transform: translateY(-2px);
+ 
+}
+
+/* Nếu PostCard của bạn có thumbnail ở trên cùng: */
+.post-card .thumb{
+  position: relative;
+  aspect-ratio: 3/4;          /* đồng bộ chiều cao ảnh */
+  overflow: hidden;
+}
+.post-card .thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.001);
+  transition: transform .3s ease;
+}
+.post-card:hover .thumb img{
+  transform: scale(1.03);
+}
+
+/* Nội dung */
+.post-card .content{
+  padding: .9rem .9rem 1.1rem;
+}
+.post-card .meta{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  color: var(--muted);
+  font: 500 .8rem/1.2 var(--ff);
+}
+
+/* Nhãn category nhỏ ở card (nếu có) */
+.badge{
+  position: absolute;
+  left: .75rem;
+  top: .75rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: .5rem;
+  padding: .25rem .5rem;
+  font: 700 .675rem/1 var(--ff);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Pagination spacing */
+.pagination{
+  margin-top: 1.75rem;
+}
+
+
+.card-post {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--card-border, #e5e7eb);
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+  height: 100%;
+}
+
+.card-post:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.1);
+}
+
+.card-post-thumb {
+  position: relative;
+  aspect-ratio: 3/4; /* giữ tỉ lệ đồng nhất */
+  overflow: hidden;
+}
+
+.card-post-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.card-post:hover .card-post-thumb img {
+  transform: scale(1.05);
+}
+
+.card-post-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: var(--primary, #2563eb);
+  color: #fff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+.card-post-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-post-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--fg, #111827);
+  margin: 0 0 0.75rem 0;
+  flex-grow: 1;
+}
+
+.card-post-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted, #64748b);
+}
