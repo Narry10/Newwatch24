@@ -1,18 +1,20 @@
-import { NextResponse } from 'next/server';
 import { firestore } from '@/configs/firebaseAdmin';
+import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-export async function GET(req) {
+export async function GET(request) {
   try {
-    const db = firestore();
-    const { searchParams } = new URL(req.url);
+    // Use searchParams instead of request.url
+    const { searchParams } = new URL(request.url);
 
     const page = Math.max(parseInt(searchParams.get('page') || '1', 10), 1);
     const limit = Math.min(parseInt(searchParams.get('limit') || '10', 10), 50);
     const category = (searchParams.get('category') || '').trim();
 
     const offset = (page - 1) * limit;
+
+    const db = firestore();
 
     // Base filter
     let base = db.collection('posts').where('status', '==', 'published');
