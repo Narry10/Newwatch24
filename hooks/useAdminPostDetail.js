@@ -12,6 +12,15 @@ export function useAdminPostDetail(slug) {
     fetcher
   );
 
+  if (data?.error) {
+    return {
+    post: null,
+    isLoading,
+    isError: !!error,
+    mutate,
+  };
+  }
+
   return {
     post: data,
     isLoading,
