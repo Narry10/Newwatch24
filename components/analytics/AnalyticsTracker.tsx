@@ -2,13 +2,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { getFirebaseAnalytics } from '@/configs/firebase';
 import { logEvent, setUserProperties } from 'firebase/analytics';
 
 export default function AnalyticsTracker() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     let mounted = true;
@@ -46,19 +45,19 @@ export default function AnalyticsTracker() {
     };
   }, []);
 
-  // Gửi page_view mỗi khi pathname hoặc query thay đổi
+  // Gửi page_view mỗi khi pathname thay đổi
   useEffect(() => {
     (async () => {
       const analytics = await getFirebaseAnalytics();
       if (!analytics) return;
 
       logEvent(analytics, 'page_view', {
-        page_path: `${pathname}${searchParams?.toString() ? `?${searchParams}` : ''}`,
+        page_path: window.location.pathname + window.location.search,
         page_title: document.title,
         page_location: window.location.href,
       });
     })();
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
 }
