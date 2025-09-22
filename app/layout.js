@@ -1,4 +1,5 @@
 import AnalyticsTracker from "@/components/analytics/AnalyticsTracker";
+import PageViewTracker from "@/components/analytics/PageViewTracker";
 import "@/node_modules/react-modal-video/css/modal-video.css";
 import { Inter, Jost } from "next/font/google";
 import Script from "next/script";

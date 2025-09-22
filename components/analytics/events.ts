@@ -1,5 +1,13 @@
 "use client";
 
+// Extend Window interface for Google Analytics
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
+
 type EventParams = Record<string, string | number | boolean | null | undefined>;
 
 // Fallback to gtag if Firebase analytics is not available
@@ -14,7 +22,8 @@ export async function logAnalyticsEvent(eventName: string, params?: EventParams)
   
   try {
     // Try Firebase Analytics first
-    const { analytics } = await import("@/configs/firebase");
+    const { getFirebaseAnalytics } = await import("@/configs/firebase");
+    const analytics = await getFirebaseAnalytics();
     if (analytics) {
       const { logEvent } = await import("firebase/analytics");
       logEvent(analytics, eventName, params);
@@ -32,7 +41,8 @@ export async function setAnalyticsUserId(userId: string) {
   if (typeof window === "undefined") return;
   
   try {
-    const { analytics } = await import("@/configs/firebase");
+    const { getFirebaseAnalytics } = await import("@/configs/firebase");
+    const analytics = await getFirebaseAnalytics();
     if (analytics) {
       const { setUserId } = await import("firebase/analytics");
       setUserId(analytics, userId);
@@ -54,7 +64,8 @@ export async function setAnalyticsUserProperties(properties: Record<string, stri
   if (typeof window === "undefined") return;
   
   try {
-    const { analytics } = await import("@/configs/firebase");
+    const { getFirebaseAnalytics } = await import("@/configs/firebase");
+    const analytics = await getFirebaseAnalytics();
     if (analytics) {
       const { setUserProperties } = await import("firebase/analytics");
       setUserProperties(analytics, properties);
