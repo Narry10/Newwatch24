@@ -78,7 +78,7 @@ export const metadata = {
     images: ["/assets/img/logo/logo-3.png"],
   },
     verification: {
-    google: "95nrmoEFMmywP8Tg3l1qy5rG2mRNJJ9Vy00uemnzIwY",
+    google: "Kgc1a-INCtJugxCtN2ib5RBlgs72OJXnjBQxhzVYeto",
   },
 };
 
