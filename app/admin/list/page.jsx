@@ -213,8 +213,8 @@ export default function AdminListPage() {
               <tr key={p.id} className="border-t hover:bg-gray-50 dark:hover:bg-gray-800">
                 <td className="p-3">
                   <img
-                    src={p.featuredImageUrl || "/assets/images/placeholder.jpg"}
-                    onError={(e) => { e.currentTarget.src = "/assets/images/placeholder.jpg"; }}
+                    src={p.featuredImageUrl || ""}
+                    onError={(e) => { e.currentTarget.src = ""; }}
                     alt={p.title}
                     className="w-16 h-16 object-cover rounded"
                   />
