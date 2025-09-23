@@ -56,8 +56,8 @@ export const metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-32x32.png",
-    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   manifest: "/site.webmanifest",
   robots: {
@@ -77,8 +77,8 @@ export const metadata = {
     description: "Newwatch24 - News, tech, lifestyle and more.",
     images: ["/assets/img/logo/logo-3.png"],
   },
-  verification: {
-    google: "Kgc1a-INCtJugxCtN2ib5RBlgs72OJXnjBQxhzVYeto",
+    verification: {
+    google: "95nrmoEFMmywP8Tg3l1qy5rG2mRNJJ9Vy00uemnzIwY",
   },
 };
 

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://NEWWATCH24.com/sitemap.xml
+Sitemap: https://newswatch24.com/sitemap.xml
 
 # Block admin areas (if any)
 Disallow: /api/

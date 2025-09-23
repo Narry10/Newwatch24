@@ -1,7 +1,7 @@
 {
-  "name": "Post SSR",
-  "short_name": "PostSSR",
-  "description": "A Next.js SSR application for posts",
+  "name": "Newwatch24 | Blog & Magazine",
+  "short_name": "Newwatch24",
+  "description": "News, tech, lifestyle and more.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -11,6 +11,12 @@
       "src": "/favicon.ico",
       "sizes": "any",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/assets/img/logo/logo-3.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
