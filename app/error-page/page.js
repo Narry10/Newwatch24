@@ -11,7 +11,7 @@ export default function Error() {
 						<div className="container">
 							<div className="error-content text-center">
 								<img src="/assets/img/images/error-img.png" alt="error" />
-								<h3 className="title">Sorry, This Page Doesn’t Exist</h3>
+								<h3 className="title">Sorry , This Page Doesn’t Exist</h3>
 								<p>
 									Sed ut perspiciatis unde omnis iste error sit voluptatem accusantium doloremque laudantium,
 									totam rem aperiam, the eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
