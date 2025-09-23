@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
   const title = meta.title || slug;
   const description = meta.description || "";
   const ogImage = meta.image || "https://newswatch24.com/_og/default.jpg";
-
+  
   return {
     title,
     description,

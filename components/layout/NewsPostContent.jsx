@@ -47,7 +47,7 @@ export default function NewsPostContent() {
                   src={post.featuredImageUrl}
                   alt={post.title}
                   onError={(e) => {
-                    e.currentTarget.src = '/assets/images/placeholder.jpg';
+                    e.currentTarget.src = '';
                   }}
                 />
               </Link>
