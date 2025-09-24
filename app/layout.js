@@ -87,7 +87,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google AdSense Verification */}
-        <meta name="google-adsense-account" content="ca-pub-XXXXXX" />
+        <meta name="google-adsense-account" content="ca-pub-6982430724321336" />
       </head>
       <body
         suppressHydrationWarning

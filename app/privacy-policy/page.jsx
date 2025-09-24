@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
         <p className="mb-2">
           If you have additional questions or require more information about our
           Privacy Policy, do not hesitate to contact us:{" "}
-          <strong>contacts.usnewswatch24@gmail.com</strong>.
+          <strong>usnewswatch24@gmail.com</strong>.
         </p>
 
         <p className="mb-4">
@@ -199,7 +199,7 @@ export default function PrivacyPolicy() {
         <p className="mb-4">
           If you make a request, we have one month to respond to you. If you
           would like to exercise any of these rights, please contact us at{" "}
-          <strong>contacts.usnewswatch24@gmail.com</strong>.
+          <strong>usnewswatch24@gmail.com</strong>.
         </p>
 
         <h2 className="text-xl font-semibold mt-4 mb-2">
@@ -244,7 +244,7 @@ export default function PrivacyPolicy() {
         <p className="mb-4">
           If you make a request, we have one month to respond to you. If you
           would like to exercise any of these rights, please contact us at{" "}
-          <strong>contacts.usnewswatch24@gmail.com</strong>.
+          <strong>usnewswatch24@gmail.com</strong>.
         </p>
 
         <h2 className="text-xl font-semibold mt-4 mb-2">
@@ -260,7 +260,7 @@ export default function PrivacyPolicy() {
           Personal Identifiable Information from children under the age of 13.
           If you think that your child provided this kind of information on our
           website, we strongly encourage you to contact us immediately at{" "}
-          <strong>contacts.usnewswatch24@gmail.com</strong> and we will do our
+          <strong>usnewswatch24@gmail.com</strong> and we will do our
           best efforts to promptly remove such information from our records.
         </p>
 
@@ -286,7 +286,7 @@ export default function PrivacyPolicy() {
           not hesitate to contact us.
         </p>
         <p className="mb-4">
-          By email: <strong>contacts.usnewswatch24@gmail.com</strong>
+          By email: <strong>usnewswatch24@gmail.com</strong>
         </p>
 
         <footer className="mt-8 border-t pt-4 text-sm text-gray-600">

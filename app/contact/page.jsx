@@ -178,20 +178,20 @@ export default function Contact() {
                   <h4>Email Us</h4>
                   <p>
                     General:{" "}
-                    <a href="mailto:contact@NEWWATCH24.com">
-                      contact@NEWWATCH24.com
+                    <a href="mailto:usnewswatch24@gmail.com">
+                      usnewswatch24@gmail.com
                     </a>
                   </p>
                   <p>
                     Business:{" "}
-                    <a href="mailto:business@NEWWATCH24.com">
-                      business@NEWWATCH24.com
+                    <a href="mailto:usnewswatch24@gmail.com">
+                      usnewswatch24@gmail.com
                     </a>
                   </p>
                   <p>
                     DMCA:{" "}
-                    <a href="mailto:dmca@NEWWATCH24.com">
-                      dmca@NEWWATCH24.com
+                    <a href="mailto:usnewswatch24@gmail.com">
+                      usnewswatch24@gmail.com
                     </a>
                   </p>
                 </div>
@@ -221,8 +221,8 @@ export default function Contact() {
                 <h4>How can I submit a movie news tip?</h4>
                 <p>
                   Send us an email at{" "}
-                  <a href="mailto:contact@NEWWATCH24.com">
-                    contact@NEWWATCH24.com
+                  <a href="mailto:usnewswatch24@gmail.com">
+                    usnewswatch24@gmail.com
                   </a>{" "}
                   with <strong>"News Tip"</strong> in the subject line.
                   Include all relevant details and sources.
@@ -234,8 +234,8 @@ export default function Contact() {
                 <p>
                   We occasionally accept high-quality guest posts. Please email
                   your proposal and writing samples to{" "}
-                  <a href="mailto:contact@NEWWATCH24.com">
-                    contact@NEWWATCH24.com
+                  <a href="mailto:usnewswatch24@gmail.com">
+                    usnewswatch24@gmail.com
                   </a>
                   .
                 </p>
@@ -246,7 +246,7 @@ export default function Contact() {
                 <p>
                   Please follow the process in our{" "}
                   <a href="/dmca">DMCA Policy</a> or email{" "}
-                  <a href="mailto:dmca@NEWWATCH24.com">dmca@NEWWATCH24.com</a>.
+                  <a href="mailto:usnewswatch24@gmail.com">usnewswatch24@gmail.com</a>.
                 </p>
               </div>
 
@@ -254,8 +254,8 @@ export default function Contact() {
                 <h4>Can I advertise on your website?</h4>
                 <p>
                   For advertising opportunities, contact{" "}
-                  <a href="mailto:business@NEWWATCH24.com">
-                    business@NEWWATCH24.com
+                  <a href="mailto:usnewswatch24@gmail.com">
+                    usnewswatch24@gmail.com
                   </a>{" "}
                   with details about your needs.
                 </p>

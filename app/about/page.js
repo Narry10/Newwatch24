@@ -57,8 +57,8 @@ export default function About() {
           </p>
           <p>
             📧 Email:{" "}
-            <a href="mailto:contacts.usnewswatch24@gmail.com">
-              contacts.usnewswatch24@gmail.com
+            <a href="mailto:usnewswatch24@gmail.com">
+              usnewswatch24@gmail.com
             </a>
           </p>
           <p>

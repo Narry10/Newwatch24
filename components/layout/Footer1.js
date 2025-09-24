@@ -30,8 +30,8 @@ return (
                                     <ul className="contact-list">
                                         <li>
                                             Email Us:{" "}
-                                            <Link href="mailto:contacts.usnewswatch24@gmail.com">
-                                                contacts.usnewswatch24@gmail.com
+                                            <Link href="mailto:usnewswatch24@gmail.com">
+                                                usnewswatch24@gmail.com
                                             </Link>
                                         </li>
                                     </ul>

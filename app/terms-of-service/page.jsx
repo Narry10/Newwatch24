@@ -234,7 +234,7 @@ export default function TermsOfService() {
           contact us:
         </p>
         <p className="mt-2">
-          By email: <strong>contacts.usnewswatch24@gmail.com</strong>
+          By email: <strong>usnewswatch24@gmail.com</strong>
         </p>
         <p className="mt-2">
           Website:{" "}
