@@ -2,7 +2,7 @@ import { firestore, FieldPath } from '@/configs/firebaseAdmin';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 function encodeToken(t) {
   return Buffer.from(JSON.stringify(t)).toString('base64url');
