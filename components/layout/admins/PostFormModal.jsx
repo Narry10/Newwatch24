@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const CATEGORIES = ["sports", "movie", "lifestyle", "fashion", "business"];
+const CATEGORIES = ["news","sports", "movie", "lifestyle", "fashion", "business"];
 const STATUSES = ["draft", "published"];
 
 export function PostFormModal({
