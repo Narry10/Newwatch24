@@ -9,11 +9,11 @@ const nextConfig = {
     serverComponentsExternalPackages: ['@google-cloud/firestore'],
   },
   async headers() {
-    return [
+    return [,
       {
-        source: '/api/:path*',
+        source: '/:path*',
         headers: [
-          { key: 'Cache-Control', value: 'no-store, must-revalidate' }
+          { key: 'Cache-Control', value: 'public, max-age=3600, must-revalidate' }
         ],
       },
     ]
@@ -21,3 +21,6 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+
+

@@ -33,6 +33,7 @@ export async function GET(req, context) {
     }
 
     const data = snap.data();
+
     return NextResponse.json({
       success: true,
       id: snap.id,
