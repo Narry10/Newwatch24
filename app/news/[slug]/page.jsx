@@ -2,7 +2,8 @@
 import { notFound } from "next/navigation";
 import { firestore } from "@/configs/firebaseAdmin";
 
-export const revalidate = 60;
+export const revalidate = 3600;
+export const dynamic = "force-static";
 
 import { unstable_cache } from "next/cache";
 
@@ -14,8 +15,7 @@ const getAdminPostDetail = unstable_cache(
     const data = snap.data() || {};
     return { id: snap.id, ...data };
   },
-  (slug) => ["adminPostDetail", slug],
-  { revalidate: 3600 }
+  (slug) => ["adminPostDetail", slug]
 );
 
 // Parse meta JSON trong comment: <!-- meta: { ... } -->
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }) {
   const title = meta.title || slug;
   const description = meta.description || "";
   const ogImage = meta.image || "https://newswatch24.com/_og/default.jpg";
-  
+
   return {
     title,
     description,

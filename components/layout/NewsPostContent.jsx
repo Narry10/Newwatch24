@@ -30,7 +30,6 @@ export default function NewsPostContent() {
   if (isLoading) return <Loading />;
   if (isError) return <div>Error loading posts</div>;
   if (!posts || posts.length === 0) return <Loading />;
-  console.log(posts);
 
   return (
     <div className="col-lg-8">

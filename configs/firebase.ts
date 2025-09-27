@@ -45,7 +45,6 @@ export const getFirebaseAnalytics = async (): Promise<Analytics | null> => {
     
     if (supported && firebaseConfig.measurementId) {
       analytics = getAnalytics(app);
-      console.log('Firebase Analytics initialized with measurement ID:', firebaseConfig.measurementId);
       return analytics;
     } else {
       console.warn('Firebase Analytics not supported or missing measurement ID');
