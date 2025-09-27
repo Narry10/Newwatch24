@@ -6,7 +6,7 @@ import { FieldValue } from "firebase-admin/firestore";
 import { revalidateTag } from "next/cache";
 
 export const runtime = "nodejs";
-export const revalidate = 60; // TTL mặc định cho route-level (fallback)
+export const revalidate = 3600; // TTL mặc định cho route-level (fallback)
 
 const toIso = (v) => (v?.toDate?.() instanceof Date ? v.toDate().toISOString() : v ?? null);
 
@@ -31,7 +31,7 @@ const getPostDetails = (slug) =>
     // cache key
     [`postDetails:${slug}`],
     // TTL + tag để invalidation
-    { revalidate: 60, tags: [`postDetails:${slug}`] }
+    { revalidate: 3600, tags: [`postDetails:${slug}`] }
   )();
 
 export async function GET(_req, { params }) {

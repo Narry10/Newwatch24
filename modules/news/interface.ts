@@ -77,13 +77,14 @@ export enum Category {
   LIFESTYLE = "lifestyle",
   FASHION = "fashion",
   BUSINESS = "business",
+  NEWS = "news",
 }
 
 export const categories = [
   { slug: Category.ALL, name: "All" },
+  { slug: Category.NEWS, name: "News" },
   { slug: Category.SPORTS, name: "Sports" },
   { slug: Category.MOVIE, name: "Movie" },
   { slug: Category.LIFESTYLE, name: "Lifestyle" },
-  // { slug: Category.FASHION, name: "Fashion" },
   { slug: Category.BUSINESS, name: "Business" },
 ];

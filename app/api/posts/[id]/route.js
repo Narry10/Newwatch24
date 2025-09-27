@@ -6,7 +6,7 @@ import { slugify } from "@/helpers/slugify";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-// (tuỳ ý) không cache
+
 export const revalidate = 0;
 
 // helper

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import CategoryTag from "./CategoryTag";
 
 export default function PostCard({
   featuredImageUrl,
@@ -23,6 +24,7 @@ export default function PostCard({
 
       <div className="card-post-body">
         <h3 className="card-post-title">{title}</h3>
+
         <ul className="card-post-meta">
           <li className="date">
             {new Date(publishAt).toLocaleDateString(undefined, {
@@ -35,6 +37,7 @@ export default function PostCard({
             <i className="las la-comments" /> {commentsCount || 1000}
           </li>
         </ul>
+        <CategoryTag category={categorySlug} />
       </div>
     </Link>
   );

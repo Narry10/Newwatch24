@@ -21,7 +21,6 @@ export async function GET(req) {
     const db = firestore();
     const { searchParams } = new URL(req.url);
 
-    // ✅ Clamp & fallback an toàn cho limit
     const limitRaw = searchParams.get('limit') ?? '10';
     const parsed = parseInt(limitRaw, 10);
     const limit = Math.min(Math.max(Number.isFinite(parsed) ? parsed : 10, 1), 50);

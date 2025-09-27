@@ -9,6 +9,7 @@ import { useCategoryPostsInfinite } from "@/hooks/useCategorys";
 
 const categories = [
   { slug: "", name: "All" },
+  { slug: "news", name: "News" },
   { slug: "sports", name: "Sports" },
   { slug: "movie", name: "Movie" },
   { slug: "lifestyle", name: "Lifestyle" },
@@ -61,7 +62,7 @@ export default function Page() {
                 author={post.author}
                 publishAt={post.publishAt || post.createdAt}
                 commentsCount={post.commentsCount}
-                categorySlug={post.categorySlug}
+                categorySlug={post.category}
                 categoryName={post.categoryName}
               />
             ))}

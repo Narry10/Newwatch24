@@ -4,13 +4,19 @@ import { firestore } from "@/configs/firebaseAdmin";
 
 export const revalidate = 60;
 
-async function getAdminPostDetail(slug) {
-  const db = firestore();
-  const snap = await db.collection("postDetails").doc(slug).get();
-  if (!snap.exists) return null;
-  const data = snap.data() || {};
-  return { id: snap.id, ...data };
-}
+import { unstable_cache } from "next/cache";
+
+const getAdminPostDetail = unstable_cache(
+  async (slug) => {
+    const db = firestore();
+    const snap = await db.collection("postDetails").doc(slug).get();
+    if (!snap.exists) return null;
+    const data = snap.data() || {};
+    return { id: snap.id, ...data };
+  },
+  (slug) => ["adminPostDetail", slug],
+  { revalidate: 3600 }
+);
 
 // Parse meta JSON trong comment: <!-- meta: { ... } -->
 function extractMetaFromHtml(html) {

@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
-import Loading from '@/app/loading';
-import Pagination from '@/components/elements/Pagination';
-import Link from 'next/link';
-import { useState, useMemo } from 'react';
-import { useLatestPosts } from '@/hooks/useLatestPosts';
+import Loading from "@/app/loading";
+import Pagination from "@/components/elements/Pagination";
+import Link from "next/link";
+import { useState, useMemo } from "react";
+import { useLatestPosts } from "@/hooks/useLatestPosts";
+import CategoryTag from "../elements/CategoryTag";
 
 const LIMIT = 10; // phải trùng với limit cố định trong useLatestPosts()
 
@@ -21,14 +22,15 @@ export default function NewsPostContent() {
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   if (isLoading) return <Loading />;
   if (isError) return <div>Error loading posts</div>;
   if (!posts || posts.length === 0) return <Loading />;
+  console.log(posts);
 
   return (
     <div className="col-lg-8">
@@ -47,29 +49,30 @@ export default function NewsPostContent() {
                   src={post.featuredImageUrl}
                   alt={post.title}
                   onError={(e) => {
-                    e.currentTarget.src = '';
+                    e.currentTarget.src = "";
                   }}
                 />
               </Link>
             </div>
             <div className="post-content">
-              <Link href={`/news/${post.slug}`} className="card-btn">
-                {post.category || 'General'}
-              </Link>
+              <CategoryTag category={post.category || "News"} />
               <h3 className="title">
                 <Link href={`/news/${post.slug}`}>{post.title}</Link>
               </h3>
+
               <ul className="post-list">
                 <li className="author">
-                  by{' '}
+                  by{" "}
                   <span>
                     <Link href={`/news/${post.slug}`}>
-                      {post.createdBy || 'Admin'}
+                      {post.createdBy || "Admin"}
                     </Link>
                   </span>
                 </li>
                 <li className="date">
-                  {new Date(post.publishAt || post.createdAt).toLocaleDateString('en-US')}
+                  {new Date(
+                    post.publishAt || post.createdAt
+                  ).toLocaleDateString("en-US")}
                 </li>
               </ul>
               <p>{post.subtitle}</p>
