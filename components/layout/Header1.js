@@ -24,7 +24,7 @@ export default function Header1({
                 </h4>
                 <ul>
                   <li>
-                    <Link href="/categories">What is Newwatch24?</Link>
+                    <Link href="/categories">What is newswatch24?</Link>
                   </li>
                   <li>
                     <Link href="/contact">Collaborate with Us</Link>

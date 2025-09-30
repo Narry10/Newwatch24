@@ -12,7 +12,7 @@ return (
                                 <h3 className="footer-header">About Us</h3>
                                 <div className="footer-content">
                                     <p className="desc">
-                                        NEWWATCH24 - Your daily source for movie trailers,
+                                        newswatch24 - Your daily source for movie trailers,
                                         entertainment news, and trending stories. Stay updated
                                         with the latest in cinema and digital content.
                                     </p>
@@ -72,7 +72,7 @@ return (
                 <div className="container">
                     <div className="copyright-wrap">
                         <p>
-                            <span>newwatch24 </span> {new Date().getFullYear()}. All Rights
+                            <span>newswatch24 </span> {new Date().getFullYear()}. All Rights
                             Reserved.
                         </p>
                         <ul className="list">

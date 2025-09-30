@@ -123,7 +123,7 @@ export default function AdminListPage() {
       alert("Delete failed");
       return;
     }
-    await mutate(); // 👈 refetch lại list
+    await mutate();
   };
 
   return (

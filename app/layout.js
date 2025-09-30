@@ -36,13 +36,13 @@ export const metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
   title: {
-    default: "Newwatch24 | Blog & Magazine",
-    template: "%s | Newwatch24",
+    default: "newswatch24 | Blog & Magazine",
+    template: "%s | newswatch24",
   },
-  description: "Newwatch24 - News, tech, lifestyle and more.",
+  description: "newswatch24 - News, tech, lifestyle and more.",
   openGraph: {
-    title: "Newwatch24 | Blog & Magazine",
-    description: "Newwatch24 - News, tech, lifestyle and more.",
+    title: "newswatch24 | Blog & Magazine",
+    description: "newswatch24 - News, tech, lifestyle and more.",
     type: "website",
     url: "/",
     images: [
@@ -50,7 +50,7 @@ export const metadata = {
         url: "/assets/img/logo/logo-3.png",
         width: 512,
         height: 128,
-        alt: "Newwatch24",
+        alt: "newswatch24",
       },
     ],
   },
@@ -73,8 +73,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Newwatch24 | Blog & Magazine",
-    description: "Newwatch24 - News, tech, lifestyle and more.",
+    title: "newswatch24 | Blog & Magazine",
+    description: "newswatch24 - News, tech, lifestyle and more.",
     images: ["/assets/img/logo/logo-3.png"],
   },
     verification: {
@@ -103,7 +103,7 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "NewsMediaOrganization",
-              name: "Newwatch24",
+              name: "newswatch24",
               url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
               logo: `${
                 process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"

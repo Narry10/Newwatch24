@@ -14,7 +14,7 @@ export default function DMCA() {
               <section>
                 <h2>1. Introduction</h2>
                 <p>
-                  NEWWATCH24 (“we,” “our,” or “us”) respects the intellectual property rights of others and expects our users to do the same. 
+                  newswatch24 (“we,” “our,” or “us”) respects the intellectual property rights of others and expects our users to do the same. 
                   In accordance with the Digital Millennium Copyright Act (DMCA) and other applicable copyright laws, 
                   we have adopted this DMCA Policy to handle claims of copyright infringement.
                 </p>
@@ -38,7 +38,7 @@ export default function DMCA() {
                   </li>
                 </ul>
                 <p>
-                  Please send DMCA Notices to: <strong>contact@NEWWATCH24.com</strong>
+                  Please send DMCA Notices to: <strong>contact@newswatch24.com</strong>
                 </p>
               </section>
 
@@ -59,7 +59,7 @@ export default function DMCA() {
                   </li>
                 </ul>
                 <p>
-                  Please send counter-notifications to: <strong>contact@NEWWATCH24.com</strong>
+                  Please send counter-notifications to: <strong>contact@newswatch24.com</strong>
                 </p>
               </section>
 
@@ -85,7 +85,7 @@ export default function DMCA() {
                   For all copyright-related inquiries, please contact us at:
                 </p>
                 <ul>
-                  <li>Email: contact@NEWWATCH24.com</li>
+                  <li>Email: contact@newswatch24.com</li>
                   <li>Contact Page: <a href="/contact">Contact Us</a></li>
                 </ul>
               </section>

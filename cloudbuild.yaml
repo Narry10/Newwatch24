@@ -1,6 +1,6 @@
 substitutions:
   _REGION: europe-west1
-  _SERVICE: newwatch24
+  _SERVICE: newswatch24
   _AR_REPO: web
   _AR_HOST: europe-west1-docker.pkg.dev
   _IMAGE: ${_AR_HOST}/${PROJECT_ID}/${_AR_REPO}/${_SERVICE}:${SHORT_SHA}

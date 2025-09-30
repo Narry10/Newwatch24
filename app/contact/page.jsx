@@ -49,6 +49,7 @@ export default function Contact() {
       setMessage("Network error. Please try again.");
     }
   }
+  
 
   return (
     <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Contact Us">
@@ -56,7 +57,7 @@ export default function Contact() {
         <div className="row">
           <div className="col-lg-8">
             <div className="contact-form-wrap">
-              <h1>Contact NEWWATCH24</h1>
+              <h1>Contact newswatch24</h1>
               <p>
                 We'd love to hear from you! Get in touch for questions,
                 suggestions, partnerships, or press inquiries.
